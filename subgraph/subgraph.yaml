@@ -1,0 +1,27 @@
+specVersion: 0.0.5
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: DDaw
+    network: sepolia
+    source:
+      address: "0x2192CDf36bf8d6334dfe21A429b35187513366cb"
+      abi: DDaw
+      startBlock: 5709773
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - NewPhrase
+        - NewTrack
+      abis:
+        - name: DDaw
+          file: ./abis/DDaw.json
+      eventHandlers:
+        - event: NewPhrase(indexed string,indexed address,uint256)
+          handler: handleNewPhrase
+        - event: NewTrack(indexed string,indexed string[],uint256)
+          handler: handleNewTrack
+      file: ./src/d-daw.ts

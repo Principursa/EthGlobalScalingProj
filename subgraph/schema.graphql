@@ -1,0 +1,19 @@
+type NewPhrase @entity(immutable: true) {
+  id: Bytes!
+  phrase: String! # string
+  owner: Bytes! # address
+  royalty: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type NewTrack @entity(immutable: true) {
+  id: Bytes!
+  name: String! # string
+  phrases: [String!]! # string[]
+  cost: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
